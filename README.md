@@ -114,4 +114,4 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 - All endpoints (except `/auth/*`) require a `Bearer` JWT token in the `Authorization` header
 - OTP codes expire after 5 minutes with a 60-second resend cooldown
-- Metrics support both underscore (`heart_rate`) and hyphen (`heart-rate`) URL formats
+
