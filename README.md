@@ -88,10 +88,10 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### 4. Run database migrations
+### 4. Initialize Database Tables
 
 ```bash
-alembic upgrade head
+python init_db.py
 ```
 
 ### 5. Start the server
