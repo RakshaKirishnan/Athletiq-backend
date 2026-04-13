@@ -18,9 +18,7 @@ _METRIC_MODELS = {
     "stamina": StaminaMetric,
     "strength": StrengthMetric,
     "heart_rate": HeartRateMetric,
-    "heart-rate": HeartRateMetric,   # accept both forms from frontend/URL
     "vo2_max": VO2MaxMetric,
-    "vo2-max": VO2MaxMetric,         # accept both forms from frontend/URL
     "sleep": SleepMetric,
     "recovery": RecoveryMetric,
     "fatigue": FatigueMetric,
@@ -80,6 +78,7 @@ class AnalyticsService:
     async def get_metric_trends(
         self, athlete_id: UUID, metric_type: str, days: int = 30
     ) -> List[Dict]:
+        metric_type = metric_type.replace("-", "_")
         model = _METRIC_MODELS.get(metric_type)
         if not model:
             return []
@@ -117,6 +116,7 @@ class AnalyticsService:
     async def get_metric_average(
         self, athlete_id: UUID, metric_type: str, days: int = 7
     ) -> Optional[float]:
+        metric_type = metric_type.replace("-", "_")
         model = _METRIC_MODELS.get(metric_type)
         if not model:
             return None
